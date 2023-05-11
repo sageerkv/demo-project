@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title  %}
+  gallery
+{% endblock title  %}
+{% load static %}
+{% block content %}
+<style>
+.img {
+    filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+}
+.client-photos {
+  display: block;
+  justify-content: center;
+  overflow: hidden;
+}
+.client-photos img {
+  padding:20px;
+}
+.client-photos img:hover {
+  opacity:0.6;
+}
+</style>
+
+<div class="container-fluid px-0 md-3">
+  <div class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static '/images/banner.jpg' %}" class="img w-100" alt="">
+        <div class="carousel-caption d-none d-md-block caption">
+          <h1 class="text-uppercase text-white"><b>GALLERY</b></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="gallery text-center p-5">
+  <h1 class="text-primary p-3">Our Works</h1>
+  <div class="client-photos">
+  <img src="{% static '/images/a1.jpg' %}" alt="">
+  <img src="{% static '/images/a2.jpg' %}" alt="">
+  <img src="{% static '/images/a3.jpg' %}" alt=""><br>
+  <img src="{% static '/images/a4.jpg' %}" alt="">
+  <img src="{% static '/images/a5.jpg' %}" alt="">
+  <img src="{% static '/images/a6.jpg' %}" alt="">
+</div>
+</section>
+
+    {% endblock  %}

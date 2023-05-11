@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title  %}
+  register
+{% endblock title  %}
+
+
+{% block content %}
+<br>
+<br>
+
+<div class="container">
+  {% if form.errors %}
+  <div class="alert alert-warning alert-dismissible fade show border border-warning" role="alert">
+    There was an error with your form....
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endif %}
+</div>
+
+
+
+<div class="container w-60 p-3 my-20 border rounded mt-5" style="background-color:rgb(213, 213, 213) ;">
+  <form action="{% url 'register' %}" method="POST" autocomplete="off" class="fw-semibold">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom border-primary mb-4 text-primary text-center fw-bold">REGISTER</legend>
+        {{form.username|as_crispy_field}}
+        {{form.email|as_crispy_field}}
+          <div class="row">
+            <div class="col-md-6">
+                {{form.password1|as_crispy_field}}
+            </div>
+            <div class="col-md-6">
+                {{form.password2|as_crispy_field}}
+            </div>
+          </div>
+    </fieldset>
+            <div class="form-group" id="signup-button">
+                <button type="submit" class="btn btn-primary btn-lg col-md-2">Sign Up</button>
+                <small class="text-muted ms-4">Already have an account? <a href="{% url 'login' %}">Sign In</a></small>
+            </div>
+  </form>
+</div>
+<br>
+<br>
+{% endblock content %}

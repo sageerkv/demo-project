@@ -1,0 +1,494 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}home{% endblock title %}
+
+{% block content %} 
+
+<style>
+  .caption{
+    font-size: 20px;
+    margin-bottom: 20rem;
+    font-weight: 10rem;
+    margin-right: 35rem;
+    text-align: left;
+  }
+  .img {
+    filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.client-photos {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.client-photos img{
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  margin: 10px;
+  border-radius: 50%;
+  animation: slide 8s linear infinite;
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+}
+100% {
+  transform: translateX(-100%);
+}
+}
+.service-item {
+  position: relative;
+  margin: 65px 0 25px 0;
+  box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+.service-item .service-img {
+  position: absolute;
+  padding: 12px;
+  width: 130px;
+  height: 130px;
+  top: -65px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  box-shadow: 0 0 45px rgba(0, 0, 0, .09);
+  z-index: 2;
+}
+
+.service-item .service-detail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.service-item .service-title {
+  position: absolute;
+  padding: 65px 30px 25px 30px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #FFFFFF;
+  transition: .5s;
+}
+
+.service-item:hover .service-title {
+  top: -100%;
+}
+
+.service-item .service-text {
+  position: absolute;
+  overflow: hidden;
+  padding: 65px 30px 25px 30px;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: rgba(2, 36, 91, .7);
+  transition: .5s;
+}
+
+.service-item:hover .service-text {
+  top: 0;
+}
+
+.service-item .service-text::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100px;
+  top: -100%;
+  left: 0;
+  transform: skewY(-12deg);
+  background: #FFFFFF;
+  transition: .5s;
+}
+
+.service-item:hover .service-text::before {
+  top: -55px;
+}
+
+.service-item .btn {
+  position: absolute;
+  width: 130px;
+  height: 50px;
+  left: 50%;
+  bottom: -25px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #0335ff;
+  border: none;
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.09);
+  z-index: 2;
+}
+
+.service-item .btn:hover {
+  color: #000000;
+  background-color: rgb(98, 98, 255);
+}
+.project-item {
+  position: relative;
+  margin: 65px 0 25px 0;
+  box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+.project-item .project-img {
+  position: absolute;
+  padding: 12px;
+  width: 130px;
+  height: 130px;
+  top: -65px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFFFFF;
+  box-shadow: 0 0 45px rgba(0, 0, 0, .09);
+  z-index: 2;
+}
+
+.project-item .project-detail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.project-item .project-title {
+  position: absolute;
+  padding: 65px 30px 25px 30px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #FFFFFF;
+  transition: .5s;
+}
+
+.project-item:hover .project-title {
+  top: -100%;
+}
+
+.project-item .project-text {
+  position: absolute;
+  overflow: hidden;
+  padding: 65px 30px 25px 30px;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: rgba(2, 36, 91, .7);
+  transition: .5s;
+}
+
+.project-item:hover .project-text {
+  top: 0;
+}
+
+.project-item .project-text::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100px;
+  top: -100%;
+  left: 0;
+  transform: skewY(-12deg);
+  background: #FFFFFF;
+  transition: .5s;
+}
+
+.project-item:hover .project-text::before {
+  top: -55px;
+}
+
+.project-item .btn {
+  position: absolute;
+  width: 130px;
+  height: 50px;
+  left: 50%;
+  bottom: -25px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #0335ff;
+  border: none;
+  box-shadow: 0 0 45px rgba(255, 255, 255, 0.09);
+  z-index: 2;
+}
+
+.project-item .btn:hover {
+  color: #000000;
+  background-color: rgb(98, 98, 255);
+}
+</style>
+
+<div class="container">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-warning alert-dismissible fade show border border-warning" role="alert">
+    {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor%}
+  {% endif%}
+</div>
+
+<section class="carousel">
+  <div class="container-fluid px-0 md-5">
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static '/images/carousel-1.jpg' %}" class="img w-100" alt="">
+        <div class="carousel-caption d-none d-md-block caption">
+          <h1 class="text-uppercase text-white">CONTRACTING</h1>
+          <p class="text-white">The company's main component, the contracting division, includes both general contracting and A/C HVAC contracting.
+          natus.</p>
+          <a href="{% url 'services' %}" class="btn btn-warning btn-lg col-md-4">Explore More</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static '/images/carousel-2.jpg' %}" class="img w-100" alt="">
+        <div class="carousel-caption d-none d-md-block caption">
+          <h1 class="text-uppercase text-white">TRADING</h1>
+          <p class="text-white">Our trading section deals in the importation, distribution, and marketing of premium HVAC components, as well as
+          additional accessories like air conditioners and other connected goods.</p>
+            <a href="{% url 'services' %}" class="btn btn-warning btn-lg col-md-4">Explore More</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static '/images/carousel-1.jpg' %}" class="img w-100" alt="">
+        <div class="carousel-caption d-none d-md-block caption">
+          <h1 class="text-uppercase text-white">MANUFACTURING</h1>
+          <p class="text-white">We Are the Leading Manufacturer & Supplier Of the Best Quality HVAC Systems Manufacturer In Saudi Arabia</p>
+          <a href="{% url 'services' %}" class="btn btn-warning btn-lg col-md-4">Explore More</a>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+</section>
+
+<section class="about">
+    <div class="container m-5">
+      <div class="row">
+        <div class="col-3"><img src="{% static '/images/about-1.jpg' %}" height="450"/></div>
+        <div class="col-3" style="margin-top: 200px;"><img src="{% static '/images/about-2.jpg' %}" height="450"/></div>
+        <div class="col-6">
+          <h5 class="text-warning">About Us</h5><br>
+          <h1 class="text-primary"><b>Are Leader In Industrial Market</b></h1>
+          <p class="justify-content">industrial company is an Electro-Mechanical Contracting Company. We are Saudi Arabia's BEST HVAC and electromechanical
+          services, provider. The operations of Jala Industrial Company include several investment sectors (Industrial, Trading,
+          and Services). Many cities could see the emergence of these activities. The most significant towns include Jeddah,
+          Makah, Tiaf, Yonbu, Gizan, and Najran among others. Over 200 projects of varying sizes have been successfully performed
+          by Jala Industrial Company this year.</p>
+          <div class="row m-3">
+            <div class="col-2 btn btn-warning m-5 pt-4">hello industrial</div>
+            <div class="col-8">
+              <p><i class="fa-solid fa-check text-warning"></i> Design Services</p>
+              <p><i class="fa-solid fa-check text-warning"></i> Mechanical Projects Execution Services</p>
+              <p><i class="fa-solid fa-check text-warning"></i> Mechanical Projects Pricing Services</p>
+              <p><i class="fa-solid fa-check text-warning"></i> DHVAC Equipment Replacement services</p>
+              <p><i class="fa-solid fa-check text-warning"></i> HVAC Systems testing, Commission and Balancing (TAB) Services</p>
+            </div>
+          </div>
+          <div class="row m-2 ps-5">
+            <span class="text-secondary"><i class="fa-solid fa-envelope-open text-warning fa-2x"></i>  Email us</span><br>
+            <h4>admin@industrial.com</h4><br>
+            <span class="text-secondary"><i class="fa-solid fa-phone text-warning fa-2x"></i>  Call us</span><br>
+            <h4>+91 9999999999</h4><br>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="why us">
+  <div class="container m-5">
+    <div class="row">
+      <div class="col-4 "><img src="{% static '/images/feature.jpg' %}" height="450"/></div>
+      <div class="col-8">
+      <h5 class="text-warning">WHY CHOOSING US!</h5><br>
+      <h1 class="text-primary"><b>We Are Leader In Industrial Market</b></h1>
+      <p class="justify-content">We provide quality HVAC equipment for residential, commercial, industrial & hygiene applications. The modular
+      construction of our product range offers complete flexibility in accommodating different sizes and functions, all
+      built-in features in our computer-aided selection software conforming to the customer’s requirement. Using our vast
+      experience and knowledge, we offer factual benefits to our customers by saving energy, ecological returns, and the
+      application of products.</p>
+      <div class="row">
+      <h3 class="text-primary"><i class="fa-solid fa-circle-check text-warning"></i> Vision</h3><br>
+      <p>Our vision is not to be the most profitable or the biggest firm, but to be the best HVAC and electromechanical services
+      company in Saudi Arabia.</p><br>
+      <h3 class="text-primary"><i class="fa-solid fa-circle-check text-warning"></i> Mission</h3><br>
+      <p>Our prime philosophy is to work closely with our business partners to provide our customers with a wide range of
+      high-quality services and products at competitive prices with the sole aim of achieving their full satisfaction.</p><br>
+      <h3 class="text-primary"><i class="fa-solid fa-circle-check text-warning"></i> Goal</h3><br>
+      <p>Be the best HVAC business in Saudi Arabia.Achieve customer and partner satisfaction.Provide high-quality products and
+      services at competitive prices and contribute to the economic growth and development in Saudi Arabia.</p><br>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="gallery text-center p-5">
+  <h1 class="text-primary p-3">Our Clients</h1>
+<div class="client-photos">
+  <img src="{% static '/images/a1.jpg' %}" alt="">
+  <img src="{% static '/images/a2.jpg' %}" alt="">
+  <img src="{% static '/images/a3.jpg' %}" alt="">
+  <img src="{% static '/images/a4.jpg' %}" alt="">
+  <img src="{% static '/images/a5.jpg' %}" alt="">
+  <img src="{% static '/images/a6.jpg' %}" alt="">
+</div>
+</section>
+
+<section class="services">
+    <div class="container-xxl py-5">
+      <div class="container">
+          <div class="text-center mx-auto pb-4" data-wow-delay="0.1s" style="max-width: 600px;">
+              <p class="fw-medium text-uppercase text-warning  mb-2">Our Services</p>
+              <h1 class="display-5 mb-4 text-primary fw-bold">We Provide Best Industrial Services</h1>
+          </div>
+          {% for service in services %}
+  
+          <div class="row gy-5 gx-4 flex p-3">
+              <div class="border border-dark">
+                  <div class="service-item">
+                      <img class="img-fluid" style="width: 100%;height: 400px;"  src="{{service.service_img.url}}" alt="">
+                      <div class="service-img">
+                          <img class="img-fluid" style="width: 100%;height: 120px;" src="{{service.service_img_1.url}}" alt="">
+                      </div>
+                      <div class="service-detail">
+                          <div class="service-title">
+                              <hr class="w-25">
+                              <h3 class="mb-0">{{service.service_title}}</h3>
+                              <hr class="w-25">
+                          </div>
+                          <div class="service-text">
+                              <p class="text-white mb-0">{{service.service_text}}</p>
+                          </div>
+                      </div>
+                      <a class="btn btn-primary"  href="{{service.service_link}}">Read More</a>
+  
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="project">
+    <div class="container-xxl py-5">
+      <div class="container">
+          <div class="text-center mx-auto pb-4" data-wow-delay="0.1s" style="max-width: 600px;">
+              <p class="fw-medium text-uppercase text-warning  mb-2">OUR PROJECTS</p>
+              <h1 class="display-5 mb-4 text-primary fw-bold">See What We Have Completed Recently</h1>
+          </div>
+          {% for project in projects %}
+  
+          <div class="row gy-5 gx-4 flex p-3">
+              <div class="border border-dark">
+                  <div class="project-item">
+                      <img class="img-fluid" style="width: 100%;height: 400px;"  src="{{project.project_img.url}}" alt="">
+                      <div class="project-img">
+                          <img class="img-fluid" style="width: 100%;height: 120px;" src="{{project.project_img_1.url}}" alt="">
+                      </div>
+                      <div class="project-detail">
+                          <div class="project-title">
+                              <hr class="w-25">
+                              <h3 class="mb-0">{{project.project_title}}</h3>
+                              <hr class="w-25">
+                          </div>
+                          <div class="project-text">
+                              <p class="text-white mb-0">{{project.project_text}}</p>
+                          </div>
+                      </div>
+                      <a class="btn btn-primary"  href="{{project.project_link}}">Read More</a>
+  
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+  </section>
+
+<section class="contact">
+  <div class="row">
+    <div class="col-4 bg-light text-center h-100 p-5">
+      <div><i class="fa-solid fa-phone bg-white text-warning rounded-circle fa-3x pt-4" style="width: 90px; height: 90px;"></i><br>
+          <br>
+        <h3 class="fw-bold text-primary">Phone Number</h3>
+        <a href="+91 9999999999" style="text-decoration: none; color: black;">+91 9999999999</a>
+      </div>
+    </div>
+    <div class="col-4 bg-light text-center h-100 p-5">
+      <div><i class="fa-solid fa-envelope-open bg-white text-warning rounded-circle fa-3x pt-4" style="width: 90px; height: 90px;"></i><br>
+          <br>
+        <h3 class="fw-bold text-primary">Email Address</h3>
+        <a href="info@demo.in" style="text-decoration: none; color: black;">info@demo.in</a>
+      </div>
+    </div>
+    <div class="col-4 bg-light text-center h-100 p-5">
+      <div><i class="fa-solid fa-location-dot bg-white text-warning rounded-circle fa-3x pt-4" style="width: 90px; height: 90px;"></i><br>
+          <br>
+        <h3 class="fw-bold text-primary">Office Address</h3>
+        <a href="#" style="text-decoration: none; color: black;">global tower,manazhi road,malapuram,675434</a>
+      </div>
+    </div>
+  </div>
+  <div class="m-5 p-5">
+    <div class="m-5"><h5 class="text-warning">CONTACT US</h5><br>
+      <h1 class="text-primary"><b>If You Have Any Queries, Please Feel Free To Contact Us</b></h1>
+      <p class="justify-content">Contact us about anything related to our company or services. We'll do our best to get back to you as soon as possible.
+      </p>
+      <div class="row m-5">
+        <div class="text-secondary col-6"><i class="fa-solid fa-envelope-open text-warning fa-2x"></i>  Email us<br>
+        <h5>admin@industrial.com</h5></div>
+        <div class="text-secondary col-6"><i class="fa-solid fa-phone text-warning fa-2x"></i>  Call us<br>
+        <h5>+91 9999999999</h5></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  {% endblock content %}

@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block title  %}
+  about
+{% endblock title  %}
+{% load static %}
+{% block content %}
+<style>
+  .img {
+    filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+}
+</style>
+<section class="about-us">
+<div class="container-fluid px-0 md-3">
+  <div class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static '/images/banner.jpg' %}" class="img w-100" alt="">
+        <div class="carousel-caption d-none d-md-block caption">
+          <h1 class="text-uppercase text-white"><b>ABOUT US</b></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="about">
+  <div class="container m-5">
+    <div class="row">
+      <div class="col-3"><img src="{% static '/images/about-1.jpg' %}" height="450"/></div>
+      <div class="col-3" style="margin-top: 200px;"><img src="{% static '/images/about-2.jpg' %}" height="450"/></div>
+      <div class="col-6">
+        <h5 class="text-warning">About Us</h5><br>
+        <h1 class="text-primary"><b>Are Leader In Industrial Market</b></h1>
+        <p class="justify-content">industrial company is an Electro-Mechanical Contracting Company. We are Saudi Arabia's BEST HVAC and electromechanical
+        services, provider. The operations of Jala Industrial Company include several investment sectors (Industrial, Trading,
+        and Services). Many cities could see the emergence of these activities. The most significant towns include Jeddah,
+        Makah, Tiaf, Yonbu, Gizan, and Najran among others. Over 200 projects of varying sizes have been successfully performed
+        by Jala Industrial Company this year.</p>
+        <div class="row m-3">
+          <div class="col-2 btn btn-warning m-5 pt-4">hello industrial</div>
+          <div class="col-8">
+            <p><i class="fa-solid fa-check text-warning"></i> Design Services</p>
+            <p><i class="fa-solid fa-check text-warning"></i> Mechanical Projects Execution Services</p>
+            <p><i class="fa-solid fa-check text-warning"></i> Mechanical Projects Pricing Services</p>
+            <p><i class="fa-solid fa-check text-warning"></i> DHVAC Equipment Replacement services</p>
+            <p><i class="fa-solid fa-check text-warning"></i> HVAC Systems testing, Commission and Balancing (TAB) Services</p>
+          </div>
+        </div>
+        <div class="row m-2 ps-5">
+          <span class="text-secondary"><i class="fa-solid fa-envelope-open text-warning fa-2x"></i>  Email us</span><br>
+          <h4>admin@industrial.com</h4><br>
+          <span class="text-secondary"><i class="fa-solid fa-phone text-warning fa-2x"></i>  Call us</span><br>
+          <h4>+91 9999999999</h4><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="background m-5">
+    <div class="text-center">
+      <h1 class="text-primary">OUR COMPANY'S BACKGROUND</h1><br>
+      <p style="text-align: justify;">&nbsp;&nbsp;&nbsp;Industrial Company was established in 1990 as an Electro-Mechanical contracting company. It is well known in Saudi
+      Arabia for engineering excellence, project completion dependability, quality of work, and after-sales service. It has
+      adopted a division aliased organization structure with each division specializing in different business segments for
+      better customer focus and providing the best possible service to achieve customer satisfaction. The contracting division
+      is the flagship division of the company that encompasses both A/C HVAC contracting and general contracting.
+      Additionally, to that, there is a trading division, which represents HVAC products & systems from different renowned
+      companies including.
+      <br>
+      <br>
+      &nbsp;&nbsp;&nbsp;The company strives to maintain the pioneer attributes and distinctions that it has gained at local and national levels.
+      It also strives to expand its activities and investments, as well as raise its competitive capabilities and its human
+      and material potential to become an international company with expanded activities and multi-national accreditation. In
+      making this feasible, the company has made wide and strong relations with many regional and global economic institutions
+      and unions.
+      <br>
+      <br>
+      &nbsp;&nbsp;&nbsp;Jala Industrial Company's activities permeate through various investment fields (Industrial, Trading, and Services).
+      These activities spread in many cities. The most notable cities include Riyadh, Jeddah, Makkah, Taif, Yanbu, Gizan, and
+      Najran. Over the years Jala Industrial Company has successfully completed over 200 projects of various sizes, in diverse
+      applications from simple fit-out works to complicated projects such as universities, hospitals, shopping centers, and
+      5-star luxury hotels.
+    </p>
+    </div>
+</section>
+  
+<section class="message m-5">
+    <div class="text-center">
+      <h1 class="text-primary">CEO'S MESSAGE</h1><br>
+      <p style="text-align: justify;">&nbsp;&nbsp;&nbsp;As we turn another page in history, I would like to take this opportunity to express my profound gratitude to all our
+      clients and business partners for their continued support and contributions to the success of Jala Industrial
+      International Company through the years of operation.
+      <br>
+      <br>
+      &nbsp;&nbsp;&nbsp;Jala Industrial International Company firmly believes in talent retention, which over time has been achieved through
+      cross-functional alignments in key talent base, and training and development programs that ensure workplace morale and
+      helped the employees acquire new skills whilst improving productivity.
+      <br>
+      <br>
+      &nbsp;&nbsp;&nbsp;Moreover, I would like to put emphasis on Jala International Company's vehement efforts in enhancing the level of
+      project design and management as well as maintaining a high level of satisfaction for our clients, whom we value as the
+      most important and indispensable assets of our company.
+    </p>
+    </div>
+</section>
+
+<section class="hierarchy">
+    <div class="text-center">
+      <h1 class="text-primary">OUR HIERARCHY</h1><br>
+<img src="{% static '/images/hie.jpg' %}" height="450"/>
+    </div>
+</section>
+
+    {% endblock  %}

@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet"
+      href=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css ">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" 
+      crossorigin="anonymous" referrerpolicy="no-referrer"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="{% static '/css/service.css'%}">
+    <title>{% block title %}base{% endblock title %}</title>
+  </head>
+  <body>
+
+    <nav class="navbar bg-white  navbar-expand-md sticky-top">
+      <div class="container">
+        <div class="col-3 text-left pl-md-0">
+          <h3 class="text-dark">THE <b class="text-primary">DEMO</b> PROJECT</h3>
+        </div>
+        
+        <div class="collapse navbar-collapse justify-content-center col-md-8 navbar-collapse-3">
+          <ul class="navbar-nav justify-content-center  fw-bold" style="gap: 5px;">
+            <li class="nav-item active">
+              <a class="nav-link text-dark active" href="{% url 'index' %}">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'about' %}">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'services' %}">SERVICES</a>
+            </li>
+			      <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'projects' %}">PROJECTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'gallery' %}">GALLERY</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-dark" href="{% url 'contact' %}">CONTACT</a>
+            </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item ms-4">
+              <a class="nav-link text-dark" href="#">{{user.username}} <i class="fas fa-user"></i></a>
+            </li>
+            <li class="nav-item ms-4">
+              <a class="nav-link text-dark" href="{% url 'logout' %}">LOGOUT</a>
+            </li>
+            {% else %}
+            <li class="nav-item ms-5">
+              <a class="nav-link text-dark" href="{% url 'register' %}">SIGN UP</a>
+            </li>
+
+            <li class="nav-item ms-5">
+              <a class="nav-link text-dark" href="{% url 'login' %}">SIGN IN</a>
+            </li>
+            {% endif %}
+
+          </ul>
+        </div>
+        
+      </div>
+    </nav>
+    
+    {% block content %}
+    
+    {% endblock content %}
+
+
+
+	
+    <section class="footer pt-3 pb-2  bg-primary text-white border-top border-success">
+      <div class="container d-flex bd-highlight">
+        <div class="p-2 col-12 col-md-3 bd-highlight text-start">
+          <h3 class="text-white">Our Office</h3>
+          <a href="#" class="text-white" style="text-decoration: none;"><i class="fa-solid fa-location-dot text-warning p-2"></i> the global</a><br>  
+          <a href="#" class="text-white" style="text-decoration: none;"><i class="fa-solid fa-phone text-warning p-2"></i> +9100000000000</a><br>
+          <a href="#" class="text-white" style="text-decoration: none;"><i class="fa-solid fa-envelope text-warning p-2"></i> dem@gmail.com</a><br>
+          <i class="fa-brands fa-twitter p-1 text-warning"></i>
+          <i class="fa-brands fa-instagram p-1 text-warning"></i>
+          <i class="fa-brands fa-facebook p-1 text-warning"></i>
+          <i class="fa-brands fa-youtube p-1 text-warning"></i>
+          <i class="fa-brands fa-linkedin p-1 text-warning"></i>
+          <i class="fa-brands fa-whatsapp p-1 text-warning"></i>
+        </div>
+  
+        <div class="p-2 col-12 col-md-3 bd-highlight text-start">
+          <h3>Quick Links</h3>
+          <a href="{% url 'about' %}" class="btn btn-link text-light" style="text-decoration: none;">> About Us</a><br>
+        <a href="{% url 'contact' %}" class="btn btn-link text-light" style="text-decoration: none;">> Contact Us</a><br>
+        <a href="{% url 'services' %}" class="btn btn-link text-light" style="text-decoration: none;">> Our Services</a><br>
+        <a href="#" class="btn btn-link text-light" style="text-decoration: none;">> Why Us</a><br>
+        </div>
+
+        <div class="col-12 col-md-3 bd-highlight text-start">
+          <h3>Business Hours</h3>
+          <p class="text-warning">Monday - Friday</p><br>
+          <h5>09:00 am - 07:00 pm</h5><br>
+          <p class="text-warning">Saturday</p><br>
+          <h5>09:00 am - 12:00 pm</h5><br>
+           
+        </div>
+
+        <div class="p-2 col-12 col-md-3 bd-highlight text-start">
+          <h3>Newsletter</h3><br>
+          <p class="text-warning"> Subscribe us to keep in touch....</p><br>
+          <form action="#" class="d-inline">
+            {% csrf_token %}
+            <div class="row ms-4 border border-white p-2">
+              <div class="col-8">
+                <textarea name="" cols="12" rows="1" class="form-control border border-success" placeholder="news letter"></textarea>
+              </div>
+              <div class="col-2">
+              <button type="submit" class="btn btn-warning">SUBMIT</button>
+              </div>
+            </div>
+          </form>
+          <br>
+          <br>
+        </div>
+      </div>
+      <footer class="footer bg-primary text-white border-top border-dark row m-0 pt-2">
+        <div class="footer-text col-8">
+            <p>Copyright &copy; 2023 by The Demo Project | All Rights Reserved.</p>
+        </div>
+      
+        <div class="d-flex flex-row-reverse col-4">
+            <a href="{% url 'index' %}"><i class='fa fa-arrow-alt-circle-up text-white fa-2x'></i></a>
+        </div>
+      </footer> 
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+
+
+  </body>
+
+</html>

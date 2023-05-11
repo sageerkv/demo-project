@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% block title  %}
+  services
+{% endblock title  %}
+{% load static %}
+{% block content %}
+<style>
+  .img {
+    filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+}
+.service-item {
+    position: relative;
+    margin: 65px 0 25px 0;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+.service-item .service-img {
+    position: absolute;
+    padding: 12px;
+    width: 130px;
+    height: 130px;
+    top: -65px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .09);
+    z-index: 2;
+}
+
+.service-item .service-detail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.service-item .service-title {
+    position: absolute;
+    padding: 65px 30px 25px 30px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #FFFFFF;
+    transition: .5s;
+}
+
+.service-item:hover .service-title {
+    top: -100%;
+}
+
+.service-item .service-text {
+    position: absolute;
+    overflow: hidden;
+    padding: 65px 30px 25px 30px;
+    width: 100%;
+    height: 100%;
+    top: 100%;
+    left: 0;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: rgba(2, 36, 91, .7);
+    transition: .5s;
+}
+
+.service-item:hover .service-text {
+    top: 0;
+}
+
+.service-item .service-text::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100px;
+    top: -100%;
+    left: 0;
+    transform: skewY(-12deg);
+    background: #FFFFFF;
+    transition: .5s;
+}
+
+.service-item:hover .service-text::before {
+    top: -55px;
+}
+
+.service-item .btn {
+    position: absolute;
+    width: 130px;
+    height: 50px;
+    left: 50%;
+    bottom: -25px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: #0335ff;
+    border: none;
+    box-shadow: 0 0 45px rgba(255, 255, 255, 0.09);
+    z-index: 2;
+}
+
+.service-item .btn:hover {
+    color: #000000;
+    background-color: rgb(98, 98, 255);
+}
+</style>
+<section class="services">
+<div class="container-fluid px-0 md-3">
+  <div class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static '/images/banner.jpg' %}" class="img w-100" alt="">
+        <div class="carousel-caption d-none d-md-block caption">
+          <h1 class="text-uppercase text-white"><b>SERVICES</b></h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="services-1">
+  <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto pb-4" data-wow-delay="0.1s" style="max-width: 600px;">
+            <p class="fw-medium text-uppercase text-warning  mb-2">Our Services</p>
+            <h1 class="display-5 mb-4 text-primary fw-bold">We Provide Best Industrial Services</h1>
+        </div>
+        {% for service in services %}
+
+        <div class="row gy-5 gx-4 p-3">
+            <div class="border border-dark">
+                <div class="service-item">
+                    <img class="img-fluid" style="width: 100%;height: 400px;"  src="{{service.service_img.url}}" alt="">
+                    <div class="service-img">
+                        <img class="img-fluid" style="width: 100%;height: 120px;" src="{{service.service_img_1.url}}" alt="">
+                    </div>
+                    <div class="service-detail">
+                        <div class="service-title">
+                            <hr class="w-25">
+                            <h3 class="mb-0">{{service.service_title}}</h3>
+                            <hr class="w-25">
+                        </div>
+                        <div class="service-text">
+                            <p class="text-white mb-0">{{service.service_text}}</p>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary"  href="{{service.service_link}}">Read More</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock content %}

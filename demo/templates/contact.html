@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title  %}
+  contact
+{% endblock title  %}
+{% load static %}
+{% block content %}
+<style>
+  .img {
+    filter: blur(2px);
+  -webkit-filter: blur(2px);
+
+}
+</style>
+
+<div class="container">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-warning alert-dismissible fade show border border-warning" role="alert">
+    {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor%}
+  {% endif%}
+</div>
+
+<section class="contact">
+  <div class="container-fluid px-0 md-3">
+    <div class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static '/images/banner.jpg' %}" class="img w-100" alt="">
+          <div class="carousel-caption d-none d-md-block caption">
+            <h1 class="text-uppercase text-white"><b>CONTACT</b></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+    <br>
+    <br>
+
+<section class="contact-1">
+  <div class="row">
+    <div class="col-4 bg-light text-center h-100 p-5">
+      <div><i class="fa-solid fa-phone bg-white text-warning rounded-circle fa-3x pt-4" style="width: 90px; height: 90px;"></i><br>
+          <br>
+        <h3 class="fw-bold text-primary">Phone Number</h3>
+        <a href="+91 9999999999" style="text-decoration: none; color: black;">+91 9999999999</a>
+      </div>
+    </div>
+    <div class="col-4 bg-light text-center h-100 p-5">
+      <div><i class="fa-solid fa-envelope-open bg-white text-warning rounded-circle fa-3x pt-4" style="width: 90px; height: 90px;"></i><br>
+          <br>
+        <h3 class="fw-bold text-primary">Email Address</h3>
+        <a href="info@demo.in" style="text-decoration: none; color: black;">info@demo.in</a>
+      </div>
+    </div>
+    <div class="col-4 bg-light text-center h-100 p-5">
+      <div><i class="fa-solid fa-location-dot bg-white text-warning rounded-circle fa-3x pt-4" style="width: 90px; height: 90px;"></i><br>
+          <br>
+        <h3 class="fw-bold text-primary">Office Address</h3>
+        <a href="#" style="text-decoration: none; color: black;">global tower,manazhi road,malapuram,675434</a>
+      </div>
+    </div>
+  </div>
+  <div class="row m-5">
+    <div class="col-4"><h5 class="text-warning">CONTACT US</h5><br>
+      <h1 class="text-primary"><b>If You Have Any Queries, Please Feel Free To Contact Us</b></h1>
+      <p class="justify-content">Contact us about anything related to our company or services. We'll do our best to get back to you as soon as possible.
+      </p>
+      <div class="row mt-5 pt-4">
+        <div class="text-secondary col-6"><i class="fa-solid fa-envelope-open text-warning fa-2x"></i>  Email us<br>
+        <h5>admin@industrial.com</h5></div>
+        <div class="text-secondary col-6"><i class="fa-solid fa-phone text-warning fa-2x"></i>  Call us<br>
+        <h5>+91 9999999999</h5></div>
+      </div>
+    </div>
+    <div class="container w-50 p-3 my-20 col-8">
+      <form action="" method="POST" autocomplete="off" class="fw-semibold">
+        {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    {{form.c_name|as_crispy_field}}
+                </div>
+                <div class="col-md-6">
+                    {{form.c_email|as_crispy_field}}
+                </div>
+            </div>
+            {{form.c_subject|as_crispy_field}}
+            {{form.c_text_area|as_crispy_field}}
+            <div class="row">
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary btn-lg col-md-12  d-md-block">Send Message</button>
+                </div>
+            </div>   
+      </form>
+    </div>
+  </div>
+</section>
+  
+  <br>
+  <br>
+
+{% endblock content %}

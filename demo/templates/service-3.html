@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% block title  %}
+HVAC
+{% endblock title  %}
+{% load static %}
+{% block content %}
+<style>
+
+</style>
+
+<div class="container">
+    <a href="{% url 'services' %}" class="btn btn-primary">Go Back</a>
+    </div>
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        <div class="col-md-8">
+            <img src="{% static '/images/project-1.jpg' %}">
+        </div>
+        <div class="col-md-4">
+            <h3>HVAC EQUIPMENT REPLACEMENT SERVICES</h3>
+            <div style="margin-top: 80px;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, deserunt perspiciatis minus quaerat ex id culpa ratione
+            optio alias cum, delectus, vero voluptates officiis cumque eos architecto ea molestias praesentium!</p>
+        </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+    {% endblock  %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title  %}
+  login
+{% endblock title  %}
+
+
+{% block content %}
+
+<div class="container w-50 p-3 my-20 border rounded mt-5" style="background-color:rgb(213, 213, 213);">
+  <form action="{% url 'login' %}" method="POST" autocomplete="off" class="fw-semibold">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom border-primary mb-4 text-primary text-center fw-bold">LOGIN</legend>
+        {{ form|crispy }}
+        <small class="text-muted">
+          <a href="{% url 'password_reset' %}">Forgot password ?</a>
+        </small>
+        <br>
+    </fieldset>
+    <br>
+    <div class="form-group" id="signin-button">
+      <button class="btn btn-primary btn-lg col-md-2">Sign in</button>
+      <small class="text-muted ms-4">don't have account,<a href="{% url 'register' %}">sign up</a></small>
+    </div>
+  </form>
+</div>
+<br>
+<br>
+<br>  
+{% endblock content %}
